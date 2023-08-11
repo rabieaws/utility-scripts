@@ -3,7 +3,7 @@
 # Create CSV file and needed headers
 echo "Username, DisplayName, Email, GroupName" > output.csv
 
-account_id=""
+account_id=$(aws sts get-caller-identity --query Account --output text)
 instance_id=$(aws sso-admin list-instances --output text --query 'Instances[0].InstanceArn')
 identity_id=$(aws sso-admin list-instances --output text --query 'Instances[0].IdentityStoreId')
 
